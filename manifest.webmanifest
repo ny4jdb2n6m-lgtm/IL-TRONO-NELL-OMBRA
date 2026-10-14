@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "Il Trono nell’Ombra · Mappa investigativa",
+  "short_name": "Trono Ombra DM",
+  "description": "Diario della campagna D&D 2024, archivio offline per il Dungeon Master.",
+  "lang": "it",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f2e9",
+  "theme_color": "#172333",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

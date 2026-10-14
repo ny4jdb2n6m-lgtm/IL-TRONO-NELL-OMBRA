@@ -1,0 +1,5 @@
+const CACHE='trono-ombra-investigazione-v1-1';
+const APP_FILES=['./','./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
+self.addEventListener('install', e=>{e.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP_FILES)).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(names=>Promise.all(names.filter(name=>(name.startsWith('trono-ombra-offline-')||name.startsWith('trono-ombra-investigazione-'))&&name!==CACHE).map(name=>caches.delete(name)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==self.location.origin)return;e.respondWith(fetch(e.request).then(response=>{if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(e.request,copy)).catch(()=>{})}return response}).catch(()=>caches.match(e.request).then(cached=>cached||caches.match('./index.html'))))});
